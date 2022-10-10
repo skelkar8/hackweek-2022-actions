@@ -1,0 +1,30 @@
+name: Pull Request Code Reviews
+
+# Controls when the workflow will run
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  - name: slack-send
+    uses: slackapi/slack-github-action@v1.22.0
+    with:
+    # For posting a rich message using Block Kit
+    payload: |
+      {
+        "text": "Hi",
+        "blocks": [
+          {
+            "type": "section",
+            "text": {
+              "type": "plain_text",
+              "text": "This is a plain text section block.",
+              "emoji": true
+            }
+          }
+        ]
+      }
+    env:
+      SLACK_WEBHOOK_URL:  https://hooks.slack.com/services/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
+      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
